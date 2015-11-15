@@ -1,0 +1,1 @@
+# mysmarthouse-core
