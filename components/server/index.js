@@ -18,6 +18,10 @@ Server.prototype._setupEvents = function() {
     that.emit('reset');
   });
 
+  this.socket.on('reconnect', function(socket) {
+    that.socket.emit('station:connect', that.config.stationId);
+  });
+
   this.pingInterval = setInterval(function() {
     that.socket.emit('station:ping', that.config.stationId);
   }, 1000);
@@ -33,6 +37,7 @@ Server.prototype.connect = function(host, port) {
     that.socket.emit('station:connect', that.config.stationId);
     deferred.resolve();
   });
+
   this.socket.on('connect_error', function(err) {
     console.log('not connected :(');
     deferred.reject(err);
