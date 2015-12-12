@@ -30,7 +30,7 @@ Server.prototype._setupEvents = function() {
 Server.prototype.connect = function(host, port) {
   var deferred = q.defer();
   var that = this;
-  this.socket = io.connect(that.config.serverHost);
+  this.socket = io.connect(that.config.serverHost, { timeout: 2000 });
   this.socket.on('connect', function(socket) {
     that._setupEvents();
     //socket.join('some room');
