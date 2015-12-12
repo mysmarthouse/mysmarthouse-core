@@ -25,12 +25,6 @@ Communicator.prototype.start = function start() {
         sensor.on('data', function(data) {
           that.server.sendSensorDataUpdate(data);
         });
-        sensor.on('connected', function(){
-          that.server.sendSensorStatusUpdate(sensor);
-        });
-        sensor.on('disconnected', function(){
-          that.server.sendSensorStatusUpdate(sensor);
-        });
       });
       //    relays.forEach(function(relay){
       //      relay.on('stateChange', function(state){

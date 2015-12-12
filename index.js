@@ -17,11 +17,13 @@ function setupCommunicator(server) {
   var communicator = new Communicator(server);
   return communicator.start();
 }
+setTimeout(function(){
 
-setupServer().then(setupCommunicator)
-  .then(function() {
-    console.log('Core application started...');
-  })
-  .catch(function(err) {
-    console.error(err)
-  });
+  setupServer().then(setupCommunicator)
+    .then(function() {
+      console.log('Core application started...');
+    })
+    .catch(function(err) {
+      console.error(err)
+    });
+},5000);

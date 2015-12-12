@@ -39,6 +39,7 @@ Sensor.prototype._setupEvents = function _setupEvents() {
       that.lastSensorUpdate = moment();
       data = {
         value: data,
+        connected: that.isConnected,
         _id: that._id
       };
       that.emit('data', data);
